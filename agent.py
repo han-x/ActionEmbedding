@@ -172,18 +172,20 @@ if __name__ == '__main__':
     if not os.path.exists(Config.model_save_folder + task_name + "/" +str(args.seed)):
         os.makedirs(Config.model_save_folder + task_name + "/" +str(args.seed))
 
-    # GridWorld Settings
-    # envs = [GridWorld(1), GridWorld(2), GridWorld(3)]
-    # Config.state_dims = [4, 4, 4]
-    # Config.action_dims = [4, 16, 64]
-    # agent = Agent(envs)
+    if 1:
+        # GridWorld Settings
+        envs = [GridWorld(1), GridWorld(2), GridWorld(3)]
+        Config.state_dims = [4, 4, 4]
+        Config.action_dims = [4, 16, 64]
+        agent = Agent(envs)
 
-    # DoublePendulum in Mujoco and RoboSchool Settings
-    envs = [MujocoWrapper('InvertedPendulum-v2', 101), MujocoWrapper('RoboschoolInvertedPendulum-v1', 91),
-            MujocoWrapper('InvertedDoublePendulum-v2', 51), MujocoWrapper('RoboschoolInvertedDoublePendulum-v1', 71)]
-    Config.state_dims = [env.observation_space.shape[0] for env in envs]
-    Config.action_dims = [101, 91, 51, 71]
-    agent = Agent(envs)
+    else: 
+        # DoublePendulum in Mujoco and RoboSchool Settings
+        envs = [MujocoWrapper('InvertedPendulum-v2', 101), MujocoWrapper('RoboschoolInvertedPendulum-v1', 91),
+                MujocoWrapper('InvertedDoublePendulum-v2', 51), MujocoWrapper('RoboschoolInvertedDoublePendulum-v1', 71)]
+        Config.state_dims = [env.observation_space.shape[0] for env in envs]
+        Config.action_dims = [101, 91, 51, 71]
+        agent = Agent(envs)
 
     if args.transfer == 1:
         agent.transfer(args.t, embedding_path=args.ckpt_path + "/embedding-" + args.ckpt_step,
