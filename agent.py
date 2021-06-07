@@ -174,9 +174,9 @@ if __name__ == '__main__':
 
     if 1:
         # GridWorld Settings
-        envs = [GridWorld(1), GridWorld(2), GridWorld(3)]
-        Config.state_dims = [4, 4, 4]
-        Config.action_dims = [4, 16, 64]
+        envs = [GridWorld(1), GridWorld(2), GridWorld(3), GridWorld(4)]
+        Config.state_dims = [4, 4, 4, 4]
+        Config.action_dims = [4, 16, 64, 256]
         agent = Agent(envs)
 
     else: 
