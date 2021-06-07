@@ -1,4 +1,4 @@
-import gym, roboschool
+import gym
 import numpy as np
 from itertools import product
 
